@@ -74,6 +74,110 @@
                     }
                 }
             },
+            "put": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Обновить заметку",
+                "operationId": "31922635bff9190064533b3f7cc64fc3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Новый заголовок"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Обновлённый текст",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Заметка успешно обновлена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Новый заголовок"
+                                        },
+                                        "content": {
+                                            "type": "string",
+                                            "example": "Обновлённый текст"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Заметка не найдена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Note not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Не прошел валидацию",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Note not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Notes"
@@ -139,7 +243,8 @@
                                     },
                                     "content": {
                                         "type": "string",
-                                        "example": "Текст заметки"
+                                        "example": "Текст заметки",
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object"
@@ -195,7 +300,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
+                                            "example": "Не заполнен заголовок заметки"
                                         },
                                         "errors": {
                                             "properties": {

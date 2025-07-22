@@ -8,6 +8,7 @@ use App\Http\Resources\NoteResource;
 use App\Models\Note;
 use Illuminate\Http\JsonResponse;
 
+
 /**
  * @OA\Post(
  *     path="/api/notes",
@@ -19,7 +20,7 @@ use Illuminate\Http\JsonResponse;
  *         @OA\JsonContent(
  *             required={"title"},
  *             @OA\Property(property="title", type="string", maxLength=255, example="Новая заметка"),
- *             @OA\Property(property="content", type="string", example="Текст заметки")
+ *             @OA\Property(property="content", type="string", example="Текст заметки", nullable=true)
  *         )
  *     ),
  *     @OA\Response(
@@ -39,7 +40,7 @@ use Illuminate\Http\JsonResponse;
  *         response=422,
  *         description="Ошибка валидации",
  *         @OA\JsonContent(
- *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+ *             @OA\Property(property="message", type="string", example="Не заполнен заголовок заметки"),
  *             @OA\Property(
  *                 property="errors",
  *                 type="object",

@@ -41,7 +41,7 @@ use Illuminate\Http\JsonResponse;
  */
 class ShowController extends Controller
 {
-public function __invoke($id): JsonResponse
+	public function __invoke($id): JsonResponse
     {
         $note = Note::find($id);
         

@@ -29,22 +29,24 @@ use Illuminate\Http\Request;
  */
 class DestroyController extends Controller
 {
-    public function __invoke(Note $id): JsonResponse
+    public function __invoke(Note $Note): JsonResponse
     {
-	   try {
-        $id->delete();
+		
+	    try 
+		{
+        $Note->delete();
         
         return response()->json([
             'success' => true,
             'message' => 'Note deleted successfully'
         ]);
         
-    } catch (\Exception $e) {
+		} catch (\Exception $e) {
         return response()->json([
             'success' => false,
-            'message' => 'Failed to delete note',
+            'message' => 'Ошибка удаления напоминания',
             'error' => $e->getMessage()
         ], 500);
-    }
+		}
     }
 }
