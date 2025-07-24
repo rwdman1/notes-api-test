@@ -29,12 +29,12 @@ use Illuminate\Http\Request;
  */
 class DestroyController extends Controller
 {
-    public function __invoke(Note $Note): JsonResponse
+    public function __invoke(Note $id): JsonResponse
     {
 		
 	    try 
 		{
-        $Note->delete();
+        $id->delete();
         
         return response()->json([
             'success' => true,

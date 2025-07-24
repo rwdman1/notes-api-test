@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('notes')->group(function () {
     Route::get('/', IndexController::class);
-    Route::get('/{id}', ShowController::class);
+    Route::get('/{id}', ShowController::class)->where('id', '[0-9]+');
     Route::post('/', StoreController::class);
-    Route::put('/{id}', UpdateController::class);
-    Route::delete('/{id}', DestroyController::class);
+    Route::put('/{id}', UpdateController::class)->where('id', '[0-9]+');
+    Route::delete('/{id}', DestroyController::class)->where('id', '[0-9]+');
 });
